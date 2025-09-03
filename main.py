@@ -472,8 +472,8 @@ class AKOS:
         if self.users_data[self.username]["servercnt"] >= 1:
             MYSQL_DB_CONFIG = {
                 "host": "222.79.176.128",
-                "port": "53603",
-                "user": "public",            
+                "port": "*****",
+                "user": "******",            
                 "password": "123456", 
                 "database": "intranet_chat_db" 
             }
@@ -601,8 +601,8 @@ class AKOS:
                     about = tk.simpledialog.askstring(title="简介",prompt="请输入你的服务器简介")
                     MYSQL_DB_CONFIG = {
                         "host": "222.79.176.128",
-                        "port": "53603",
-                        "user": "public",            
+                        "port": "*****",
+                        "user": "******",            
                         "password": "123456", 
                         "database": "intranet_chat_db" 
                     }
@@ -624,8 +624,8 @@ class AKOS:
         elif ans == False:
             MYSQL_DB_CONFIG = {
                 "host": "222.79.176.128",
-                "port": "53603",
-                "user": "public",            
+                "port": "*****",
+                "user": "******",            
                 "password": "123456", 
                 "database": "intranet_chat_db" 
             }
@@ -651,6 +651,7 @@ class AKOS:
                                     json.dump(self.users_data, f, indent=4, ensure_ascii=False)
                     except:
                         tk.messagebox.showerror("错误","ping服务器失败，请检查网络连接或检查ping是否安装")
+                tk.messagebox.showinfo("提示","已经打印所有服务器地址到终端")
             
 
     # 工具方法实现（示例）
@@ -673,8 +674,8 @@ class AKOS:
 
                     MYSQL_DB_CONFIG = {
                         "host": "222.79.176.128",
-                        "port": "53603",
-                        "user": "public",            
+                        "port": "*****",
+                        "user": "******",            
                         "password": "123456", 
                         "database": "intranet_chat_db" 
                     }
@@ -693,8 +694,8 @@ class AKOS:
             os.system("cls")
             MYSQL_DB_CONFIG = {
                 "host": "222.79.176.128",
-                "port": "53603",
-                "user": "public",            
+                "port": "*****",
+                "user": "******",            
                 "password": "123456", 
                 "database": "intranet_chat_db" 
             }

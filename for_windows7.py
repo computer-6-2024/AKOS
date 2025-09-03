@@ -530,7 +530,7 @@ class AKOS:
             ("解除极域", self.kill_ey),
             ("玩弄极域", self.play_ey),
             ("解除冰点", self.kill_ice),
-            ("PCL2启动", self.start_pcl2)
+            ("MC启动", self.start_pcl2)
         ]
         for text, cmd in tools:
             btn = ttk.Button(self.tool_frame, text=text, command=cmd)
@@ -605,8 +605,8 @@ class AKOS:
                     about = tk.simpledialog.askstring(title="简介",prompt="请输入你的服务器简介")
                     MYSQL_DB_CONFIG = {
                         "host": "222.79.176.128",
-                        "port": "53603",
-                        "user": "public",            
+                        "port": "*****",
+                        "user": "******",            
                         "password": "123456", 
                         "database": "intranet_chat_db" 
                     }
@@ -628,8 +628,8 @@ class AKOS:
         elif ans == False:
             MYSQL_DB_CONFIG = {
                 "host": "222.79.176.128",
-                "port": "53603",
-                "user": "public",            
+                "port": "*****",
+                "user": "******",            
                 "password": "123456", 
                 "database": "intranet_chat_db" 
             }
@@ -638,21 +638,15 @@ class AKOS:
             all_servers = manager.get_all_servers()
             if all_servers:
                 print("自定义服务器列表:")
-                tk.messagebox.showinfo("提示","ping所有服务器中，请稍等")
+                tk.messagebox.showinfo("提示","已经打印所有服务器地址到终端")
                 for server in all_servers:
                     try:
                         local = server['address']
                         response = self.get_request_code(local)
                         result = subprocess.run(['ping', '-n', '1', local], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                        if result.returncode == 0 or response == 200:
-                            print(f"- {'简介: '} | {server['description']} ) | {'上传者: '} | {server['uploader']} ) | {'服务器地址: '} | {server['address'] }")
-                        else:
-                            resulta = subprocess.run(['ping', '-n', '1', '222.79.176.128'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                            if resulta.returncode == 0 and (not result.returncode == 0) and (not response):
-                                manager.delete_server_by_address(server['address'])
-                                self.users_data[server['uploader']]["servercnt"] -= 1
-                                with open('users.json', 'w', encoding='utf-8') as f:
-                                    json.dump(self.users_data, f, indent=4, ensure_ascii=False)
+                        
+                        print(f"- {'简介: '} | {server['description']} ) | {'上传者: '} | {server['uploader']} ) | {'服务器地址: '} | {server['address'] }")
+                        
                     except:
                         tk.messagebox.showerror("错误","ping服务器失败，请检查网络连接或检查ping是否安装")
             
@@ -677,8 +671,8 @@ class AKOS:
 
                     MYSQL_DB_CONFIG = {
                         "host": "222.79.176.128",
-                        "port": "53603",
-                        "user": "public",            
+                        "port": "*****",
+                        "user": "******",            
                         "password": "123456", 
                         "database": "intranet_chat_db" 
                     }
@@ -697,8 +691,8 @@ class AKOS:
             os.system("cls")
             MYSQL_DB_CONFIG = {
                 "host": "222.79.176.128",
-                "port": "53603",
-                "user": "public",            
+                "port": "*****",
+                "user": "******",            
                 "password": "123456", 
                 "database": "intranet_chat_db" 
             }
@@ -756,7 +750,7 @@ class AKOS:
 
 
     def start_pcl2(self):
-        subprocess.Popen(["PCL2.exe"])
+        subprocess.Popen(["HMCL.exe"])
         
     def run(self):
         self.root.mainloop()
