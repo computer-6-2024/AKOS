@@ -582,9 +582,8 @@ class AKOS:
 
             # 解析 JSON 响应
             data = response.json()
-
             # 提取 'code' 项
-            status_code = data.get("code")
+            status_code = data.get("online")
             return status_code
         except:
             tk.messagebox.showerror("错误","获取服务器信息失败，请检查地址是否正确！")
@@ -597,7 +596,7 @@ class AKOS:
                 tk.messagebox.showinfo("提示","ping服务器中，请稍等")
                 response = self.get_request_code(local)
                 result = subprocess.run(['ping', '-n', '1', local], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                if result.returncode == 0 or response == 200:
+                if result.returncode == 0 or response:
                     tk.messagebox.showinfo("提示","ping服务器成功！")
                     about = tk.simpledialog.askstring(title="简介",prompt="请输入你的服务器简介")
                     MYSQL_DB_CONFIG = {
@@ -622,7 +621,7 @@ class AKOS:
                     tk.messagebox.showerror("错误","ping服务器失败，请检查网络连接或检查服务器地址是否正确！")
             except:
                 tk.messagebox.showerror("错误","ping服务器失败，请检查网络连接或检查ping是否安装")
-        else:
+        elif ans == False:
             MYSQL_DB_CONFIG = {
                 "host": "222.79.176.128",
                 "port": "53603",
@@ -641,8 +640,8 @@ class AKOS:
                         local = server['address']
                         response = self.get_request_code(local)
                         result = subprocess.run(['ping', '-n', '1', local], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                        if result.returncode == 0 or response == 200:
-                            print(f"- {"简介："} | {server['description']} | {"上传者："} | {server['uploader']} | {"服务器地址："} | {server['address']}")
+                        if result.returncode == 0 or response:
+                            print(f"- {'简介: '} | {server['description']} ) | {'上传者: '} | {server['uploader']} ) | {'服务器地址: '} | {server['address'] }")
                         else:
                             resulta = subprocess.run(['ping', '-n', '1', '222.79.176.128'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                             if resulta.returncode == 0 and (not result.returncode == 0) and (not response == 200):
@@ -707,7 +706,7 @@ class AKOS:
             all_entries = manager.get_all_entries()
             if all_entries:
                 for entry in all_entries:
-                    print(f"- {"名称："} | {entry['name']} | {"上传者："} | {entry['uploader']} | {"服务器IP："} | {entry['address']} | {"端口："} | {"345"}")
+                    print(f"- 名称： {entry['name']} | 上传者： {entry['uploader']} | 服务器IP： {entry['address']} | 端口： 345")
 
 
 
