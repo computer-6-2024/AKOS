@@ -648,7 +648,7 @@ class AKOS:
                             print(f"- {'简介: '} | {server['description']} ) | {'上传者: '} | {server['uploader']} ) | {'服务器地址: '} | {server['address'] }")
                         else:
                             resulta = subprocess.run(['ping', '-n', '1', '222.79.176.128'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                            if resulta.returncode == 0 and (not result.returncode == 0) and (not response == 200):
+                            if resulta.returncode == 0 and (not result.returncode == 0) and (not response):
                                 manager.delete_server_by_address(server['address'])
                                 self.users_data[server['uploader']]["servercnt"] -= 1
                                 with open('users.json', 'w', encoding='utf-8') as f:
